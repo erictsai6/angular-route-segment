@@ -126,9 +126,11 @@ mod.provider( '$routeSegment',
      * The shorthand for $routeProvider.when() method with specified route name.
      * @param {string} route Route URL, e.g. '/foo/bar'
      * @param {string} name Fully qualified route name, e.g. 'foo.bar'
+     * @param {object} custom Any custom data added to the when function
      */
-    $routeSegmentProvider.when = function(route, name) {
-        $routeProvider.when(route, {segment: name});
+    $routeSegmentProvider.when = function(route, name, custom) {
+        var config = _.extend({segment: name}, custom || {});
+        $routeProvider.when(route, config);
         segmentRoutes[name] = route;
         return this;
     };
