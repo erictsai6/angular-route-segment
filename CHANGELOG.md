@@ -1,3 +1,7 @@
+#1.3.4 (2014-10-07)
+
+-Allow custom parameters to be added to the where object
+
 # 1.3.3 (2014-09-30)
 
 - Due to [angular.js@fca6be71](https://github.com/angular/angular.js/commit/fca6be71), filters are now flagged as `$stateful=true` for compatibility reasons ([03f8425](https://github.com/artch/angular-route-segment/commit/03f8425)).
