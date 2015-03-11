@@ -138,6 +138,7 @@ mod.provider( '$routeSegment',
     this.$get = ['$rootScope', '$q', '$http', '$templateCache', '$route', '$routeParams', '$injector',
                  function($rootScope, $q, $http, $templateCache, $route, $routeParams, $injector) {
                 
+        var $routeReference = $route;
         var $routeSegment = {    
                 
                 /**
@@ -315,6 +316,21 @@ mod.provider( '$routeSegment',
 
                     return defaultChildUpdatePromise;
                 });
+            } else {
+                // If args has some locals then we should attempt to render it
+                if ($routeReference.routes && $routeReference.routes.null) {    
+                                                              
+                var result = updateSegment(0, {                             
+                    name: 'null',                               
+                    params: $routeReference.routes.null                     
+                })                                                          
+                  .then(function(result) {                                
+                        if (result.success != undefined) {                  
+                            broadcast(result.success);                      
+                        }                                                   
+                    });                                                     
+                                                                          
+                }                                                               
             }
         });
         
