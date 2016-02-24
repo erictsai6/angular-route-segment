@@ -123,7 +123,7 @@ mod.provider( '$routeSegment',
      * @param {object} custom Any custom data added to the when function
      */
     $routeSegmentProvider.when = function(route, name, custom) {
-        var config = _.extend({segment: name}, custom || {});
+        var config = angular.extend({segment: name}, custom || {});
         $routeProvider.when(route, config);
         segmentRoutes[name] = route;
         return this;
